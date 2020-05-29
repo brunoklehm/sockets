@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
         printf("Falha no recv\n");
         return 1;
     }
-    printf("Resposta recebida ");
+    printf("Resposta recebida.\n");
     printf("%s\n", server_reply);
 
     /* close connection */
