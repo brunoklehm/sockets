@@ -20,9 +20,9 @@ int main(int argc, char *argv[])
     }
 
     /* server to connect */
-    server.sin_addr.s_addr = inet_addr("172.217.28.132");
+    server.sin_addr.s_addr = inet_addr("127.0.0.1");
     server.sin_family = AF_INET; /* IPv4 */
-    server.sin_port = htons(80);
+    server.sin_port = htons(8888);
 
     /* connect to server */
     if (connect(socket_desc, (struct sockaddr *) &server, sizeof(server)) < 0) 
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     printf("Conectado.\n");
 
     /* send data */
-    message = "GET / HTTP/1.1\r\n\r\n";
+    message = "Hello World!";
     if (send(socket_desc, message, strlen(message), 0) < 0)
     {
         printf("Erro ao enviar\n");
@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
     printf("Resposta recebida ");
     printf("%s\n", server_reply);
 
+    /* close connection */
     close(socket_desc);
 
     return 0;
